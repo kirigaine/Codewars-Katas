@@ -25,14 +25,31 @@
 import re
 
 def increment_string(strng):
-    parts = re.split(r'([0-9])',strng,1)
-    if len(parts) > 1:
-        # UNFINISHED, ACCOUNT FOR LEFT AND RIGHT JUSTIFICATION OF ZEROS. NEED ZFILL()?
-        return parts[0] + str((int(parts[1] + parts[2]) + 1))
-    return parts[0]
+    # Find all groups of numbers in string
+    found = re.findall("[0-9]+",strng)
+    # Account for edge case of no numbers
+    if len(found) == 0: return strng+'1'
     
-print(increment_string("foo"))
-print(increment_string("foobar001"))
-print(increment_string("foobar1"))
-print(increment_string("foobar00"))
-print(increment_string("foobar100"))
+    # Access tail numbers of string, use that length to access everything else (word)
+    numbers = found[len(found)-1]
+    words = strng[:-len(numbers)]
+    num_length = len(numbers)
+    # Zfill length of leading zeroes
+    new_numbers = str((int(numbers) + 1)).zfill(num_length)
+    return words + new_numbers
+    
+    
+    
+# Function before finding learning input could have leading numbers 
+    
+# def increment_string(strng):
+    # found = re.search("[0-9]+",strng)
+    # if found is None: return strng+'1'
+    # words = strng[0:found.start()]
+    # numbers = strng[found.start():]
+    # num_length = len(numbers)
+    # new_numbers = str((int(numbers) + 1)).zfill(num_length)
+    # return words + new_numbers
+    # # print("Length: ", num_length)
+    # # print(numbers)
+    # # print(new_numbers)
