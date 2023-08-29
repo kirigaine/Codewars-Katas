@@ -12,4 +12,8 @@ The difficulty ranges from **8 kyu** (easiest) to **1 kyu** (hardest).
 
 Completing **kata** raises your overall honor and rank.
 
+# Language
+
+Every **kata** I've completed has been in **PYTHON**.
+
 https://www.codewars.com/users/kirigaine
